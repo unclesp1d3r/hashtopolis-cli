@@ -14,10 +14,18 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
-package main
+package utils
 
-import "github.com/unclesp1d3r/hashtopolis-cli/cmd"
+import (
+	"github.com/olekukonko/tablewriter"
+	"os"
+)
 
-func main() {
-	cmd.Execute()
+func PrintTable(header []string, data [][]string) {
+	table := tablewriter.NewWriter(os.Stdout)
+
+	table.SetHeader(header)
+	table.AppendBulk(data)
+
+	table.Render()
 }
